@@ -6,6 +6,7 @@ public class ScoreManager : MonoBehaviour
     public static ScoreManager instance;
     public TextMeshProUGUI scoreText;
     private int score;
+    public PortalManager portalManager; // 포털 매니저 참조 추가
 
     void Awake()
     {
@@ -30,6 +31,11 @@ public class ScoreManager : MonoBehaviour
     {
         score += amount;
         UpdateScoreText();
+
+        if (score >= 100)
+        {
+            portalManager.CreatePortal();
+        }
     }
 
     public void ResetScore()
